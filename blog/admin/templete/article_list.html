@@ -1,0 +1,93 @@
+<?php require ADMIN_TEP_PATH . 'header.html';?>
+<?php require ADMIN_TEP_PATH . 'left.html';?>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        文章列表
+                        <small>文章</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="index.php"><i class="fa fa-dashboard"></i> 管理中心</a></li>
+                        <li><a href="article.php">文章</a></li>
+                        <li class="active">文章列表</li>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title"></h3>
+                                    <a href="article.php?a=add" class="btn btn-default pull-right">添加文章</a>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <table class="table table-bordered">
+                                        <tbody><tr>
+                                            <th style="width: 10px">#</th>
+                                            <th>标题</th>
+                                            <th>状态</th>
+                                            <th>创建时间</th>
+                                            <th>所属分类</th>
+                                            <th style="width: 20%">操作</th>
+                                        </tr>
+                                        <?php foreach($article_list as $article):?>
+                                        <tr>
+                                            <td><?=$article['id'];?></td>
+                                            <td><?=$article['title'];?></td>
+                                            <td><?=$article['status'];?></td>
+                                            <td><?=date('Y-m-d H:i:s',$article['add_time']);?></td>
+                                            <td><?=$article['c'];?></td>
+                                            <td>
+    <a href="article.php?a=edit&id=<?php echo $article['id'];?>" class="btn btn-default" title="编辑"><span class="fa fa-edit"></span> 编辑</a>
+                                                <a href="article.php?a=delete&art_id=<?=$article['id'];?>" class="btn btn-default" title="删除" onclick="return confirm('是否删除？');"><span class="fa fa-trash-o"></span> 删除</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach;?>
+                                    </tbody></table>
+                                </div><!-- /.box-body -->
+                                <!--分页的位置-->
+                            <div class="text-center">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="article.php?a=list&page=1" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <?php 
+                                    $begin = $page-2<=0 ? 1 : $page-2;
+                                    $end = $page+2>$total_page ? $total_page:$page+2;
+                                    ?>
+                                    <?php for($i=$begin;$i<=$end;$i++):?>
+                                    <li class="<?php echo $page==$i ? 'active': '';?>">
+                                        <a href="article.php?a=list&page=<?php echo $i;?>"><?=$i;?></a>
+                                    </li>
+                                    <?php endfor;?>
+                                    <li>
+                                    <a href="article.php?a=list&page=<?=$total_page;?>" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section><!-- /.content -->
+
+                <section class="content-footer">
+                    <div class="text-center">
+                        &copy;ITbull，泰牛程序员
+                    </div>
+                </section><!-- /.content-footer -->
+
+            </aside><!-- /.right-side -->
+<?php require ADMIN_TEP_PATH . 'footer.html';?>

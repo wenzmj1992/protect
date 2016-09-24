@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>管理中心_泰牛的博客</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+		// <script>
+		// 		function checkForm(){
+		// 				var username=document.getElementById('username').value;
+		// 				var password=document.getElementById('password').value;
+  //                       var captcha=document.getElementById('captcha').value;
+  //                       if(username=='' || password==''){
+		// 					alert('用户名和密码不能为空');
+		// 					return false;
+		// 				}else if(captcha==''){
+  //                           alert('验证码不能为空');
+  //                           return false;
+		// 				}else{
+  //                           return true;
+  //                       }
+		// 		}
+
+			
+		//  </script>
+    </head>
+    <body class="bg-black">
+
+        <div class="form-box" id="login-box">
+            <div class="header">登陆</div>
+			<!--带一个标识 check 表示要验证用户的合法性-->
+            <form action="user.php?a=check" method="post" onsubmit="return checkForm()">
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="用户名"
+						 id="username"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="密码"
+						 id="password"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="captcha" class="form-control" placeholder="验证码"
+                         id="captcha"/>
+                    </div>
+                     <div>
+                        <img src="user.php?a=captcha" onclick="this.src='user.php?a=captcha&'+Math.random()" alt="验证码">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="remember_me" value="1"/> 记住我
+                    </div>
+                   
+                </div>
+                <div class="footer">
+                    <input type="submit" class="btn bg-olive btn-block" value="登陆">
+
+                    <!-- <p><a href="#">I forgot my password</a></p> -->
+
+                    <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
+                </div>
+            </form>
+        </div>
+
+
+        <!-- jQuery 2.0.2 -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+    </body>
+</html>
